@@ -1,10 +1,20 @@
-for ((i=0; i<=4; i ++))  
-do  
-    echo /opt/d$i  
-    mkdir -p /srv/node/d$i
-    dd if=/dev/zero of=/opt/d$i bs=1M count=0 seek=5000
-    mkfs.xfs -f -L d$i /opt/d$i
-    mount -t xfs -o noatime,nodiratime,logbufs=8 /opt/d$i /srv/node/d$i
-done  
+mkdir -p /srv
 useradd swift
-chown -R swift:swift /srv/node
+
+for ((i=1; i<=4; i ++))  
+do  
+    echo loop$i  
+    truncate -s 5GB /srv/swift-disk$i
+    mkfs.xfs -f /srv/swift-disk$i
+    mkdir /mnt/sdb$i    
+    mount -t xfs -o loop,noatime,nodiratime,logbufs=8 /srv/swift-disk$i /mnt/sdb$i
+    mkdir /mnt/sdb$i/$i
+    chown -R swift:swift /mnt/sdb$i/$i
+    ln -s /mnt/sdb$i/$i /srv/$i
+    mkdir -p /srv/$i/node/sdb$i
+    chown -R swift:swift /srv/$i/ 
+done  
+mkdir -p /var/run/swift
+chown -R swift:swift /var/run/swift
+
+
