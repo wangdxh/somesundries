@@ -1,3 +1,40 @@
-https://download.ceph.com/rpm-luminous/el7/noarch/
+ 
+ 
+ rpm --import 'https://download.ceph.com/keys/release.asc'
 
-rpm -ivh
+#https://download.ceph.com/rpm-luminous/el7/noarch/
+
+#rpm -ivh
+
+#sudo yum install yum-plugin-priorities
+
+yum install snappy leveldb gdisk python-argparse gperftools-libs
+
+/etc/yum.repo.d/ceph.repo
+
+[Ceph]
+name=Ceph packages for $basearch
+baseurl=http://mirrors.aliyun.com/ceph/rpm-luminous/el7/$basearch
+enabled=1
+gpgcheck=1
+type=rpm-md
+gpgkey=https://mirrors.aliyun.com/ceph/keys/release.asc
+
+[Ceph-noarch]
+name=Ceph noarch packages
+baseurl=http://mirrors.aliyun.com/ceph/rpm-luminous/el7/noarch
+enabled=1
+gpgcheck=1
+type=rpm-md
+gpgkey=https://mirrors.aliyun.com/ceph/keys/release.asc
+
+[ceph-source]
+name=Ceph source packages
+baseurl=http://mirrors.aliyun.com/ceph/rpm-luminous/el7/SRPMS
+enabled=1
+gpgcheck=1
+type=rpm-md
+gpgkey=https://mirrors.aliyun.com/ceph/release.asc
+
+yum install ceph
+
