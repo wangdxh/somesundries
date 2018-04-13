@@ -38,3 +38,9 @@ gpgkey=https://mirrors.aliyun.com/ceph/release.asc
 
 yum install ceph
 
+
+https://blog.csdn.net/for_tech/article/details/77188121
+CentOS7下部署ceph-12 (luminous)--单机集群
+
+https://blog.csdn.net/for_tech/article/details/77247665
+CentOS7下部署ceph-12 (luminous)--多机集群
