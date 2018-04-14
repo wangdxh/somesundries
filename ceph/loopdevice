@@ -1,0 +1,21 @@
+
+uuidgen
+ceph-authtool --gen-print-key
+
+dd if=/dev/zero of=sd1 bs=4M count=1000
+losetup /dev/loop0 sd1
+mount -o rw,noatime,nobarrier,inode64,logbsize=256k,delaylog /dev/loop0 /var/lib/ceph/osd/ceph-0 
+
+ceph-authtool --create-keyring /var/lib/ceph/osd/ceph-0/keyring --name osd.0 --add-key AQBxbtFaklV3IhAAkXpzgOay5ZcFXIABKO67Jg==
+ceph-osd --cluster ceph -i 0 --mkfs --osd-uuid 3bb00f38-bb14-4890-9778-d2d5349deeeb
+
+
+#delete osd
+ceph osd out 4
+systemctl stop ceph-osd@4
+ceph osd crush remove osd.4
+ceph auth del osd.4
+ceph osd rm 4
+
+umount
+delete file
