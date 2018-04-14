@@ -1,0 +1,3 @@
+ceph --cluster ceph auth get-or-create mgr.node2 mon 'allow profile mgr' osd 'allow *' mds 'allow *'  
+mkdir /var/lib/ceph/mgr/ceph-node2/
+systemctl start ceph-mgr@node2
