@@ -1,6 +1,6 @@
 #!/bin/bash
 
-for ((i=0; i<=3; i ++))
+for ((i=0; i<=7; i ++))
 do
     ceph osd out $i
     systemctl stop ceph-osd@$i

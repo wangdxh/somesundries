@@ -1,16 +1,17 @@
 #!/bin/bash
 
-systemctl restart ceph-mon@node2
+#systemctl restart ceph-mon@node2
 
-systemctl restart ceph-mgr@node2
+#systemctl restart ceph-mgr@node2
 
-sleep 5
+#sleep 5
 
 cd /root
 sh ./cleanosd.sh
 
+sleep 10
 
-for ((i=0; i<=3; i ++))
+for ((i=0; i<=0; i ++))
 do
     truncate -s 4GB /srv/sd$i
     losetup /dev/loop$i /srv/sd$i
