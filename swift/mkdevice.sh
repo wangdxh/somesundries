@@ -28,5 +28,18 @@ chown -R swift:swift /etc/swift
 
 find /etc/swift/ -name \*.conf | xargs sudo sed -i "s/<your-user-name>/swift/"
 
+/usr/bin/cp -f $HOME/swift/doc/saio/rsyncd.conf /etc/
+sed -i "s/<your-user-name>/swift/" /etc/rsyncd.conf
+
+echo "disable = no" >>  /etc/xinetd.d/rsync
+setenforce Permissive
+
+systemctl restart xinetd.service
+systemctl enable rsyncd.service
+systemctl start rsyncd.service
+rsync rsync://pub@localhost/
+systemctl enable memcached.service
+systemctl start memcached.service
+
 
 
