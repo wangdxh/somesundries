@@ -22,7 +22,7 @@ rm -rf /etc/swift
 mkdir -p /etc/swift
 
 cd $HOME/swift/doc
-cp -r saio/swift /etc/swift
+cp -r saio/swift/* /etc/swift
 cd 
 chown -R swift:swift /etc/swift
 
