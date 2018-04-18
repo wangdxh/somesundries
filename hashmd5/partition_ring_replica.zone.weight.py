@@ -48,12 +48,12 @@ def build_ring(nodes, partition_power, replicas):
                 node['desired_parts'] -= 1
                 part2node.append(node['id'])
                 break
-            else:
-                for node in nodes.itervalues():
-                    if node['desired_parts'] >= 0:
-                        node['desired_parts'] -= 1
-                        part2node.append(node['id'])
-                        break
+        else:
+            for node in nodes.itervalues():
+                if node['desired_parts'] >= 0:
+                    node['desired_parts'] -= 1
+                    part2node.append(node['id'])
+                    break
     shuffle(part2node)
     ring = Ring(nodes, part2node, replicas)
     print '%.02fs to build ring' % (time() - begin)
