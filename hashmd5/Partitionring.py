@@ -22,8 +22,7 @@ while vnodes_to_reassign > 0:
             if node_id == node_to_take_from:
                 new_vnode2node[vnode_id] = new_node_id
                 vnodes_to_reassign -= 1
-                if vnodes_to_reassign <= 0:
-                    break
+                break
         if vnodes_to_reassign <= 0:
             break
 moved_ids = 0
