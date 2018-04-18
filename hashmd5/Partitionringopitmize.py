@@ -19,8 +19,7 @@ while vnodes_to_assign > 0:
             if node_id == node_to_take_from:
                 vnode2node[vnode_id] = new_node_id
                 vnodes_to_assign -= 1
-                if vnodes_to_assign <= 0:
-                    break
+                break
         if vnodes_to_assign <= 0:
             break
 moved_id = 0
