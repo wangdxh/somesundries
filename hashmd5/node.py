@@ -21,7 +21,3 @@ min_count = min(node_counts)
 under = 100.0 * (desired_count - min_count) / desired_count
 print '%d: Least data ids on one node, %.02f%% under' % \
     (min_count, under)
-
-100000: Desired data ids per node
-100695: Most data ids on one node, 0.69% over
-99073: Least data ids on one node, 0.93% under
