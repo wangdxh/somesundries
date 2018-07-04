@@ -22,6 +22,8 @@ while vnodes_to_assign > 0:
                 break
         if vnodes_to_assign <= 0:
             break
+
+
 moved_id = 0
 for data_id in xrange(DATA_ID_COUNT):
     data_id = str(data_id)
