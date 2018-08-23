@@ -1,0 +1,9 @@
+5.7 安装之后更改用户名密码：
+
+默认root密码
+grep "temporary password" /var/log/mysqld.log 
+2018-08-23T05:58:02.684122Z 1 [Note] A temporary password is generated for root@localhost: yo;5yaL-eUqj
+
+step 1: SET PASSWORD = PASSWORD('your new password');
+step 2: ALTER USER 'root'@'localhost' PASSWORD EXPIRE NEVER;
+step 3: flush privileges;
