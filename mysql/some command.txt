@@ -19,6 +19,10 @@ alter user 'root'@'%' require none;
 查看
 show global variables like '%ssl%';
 
+验证ssl 需要秘钥：
+require x509;
+ mysql -uroot -pWangxiaohui%123 --ssl-ca=/var/lib/mysql/ca.pem --ssl-cert=/var/lib/mysql/client-cert.pem --ssl-key=/var/lib/mysql/client-key.pem
+mysql workbench可以登录成功，navicat 无法登陆成功。 
 
 
 
