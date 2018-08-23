@@ -7,3 +7,18 @@ grep "temporary password" /var/log/mysqld.log
 step 1: SET PASSWORD = PASSWORD('your new password');
 step 2: ALTER USER 'root'@'localhost' PASSWORD EXPIRE NEVER;
 step 3: flush privileges;
+
+创建用户
+CREATE USER 'root'@'%' IDENTIFIED BY 'Wangxiaohui%123';
+ALTER USER 'root'@'%' IDENTIFIED BY 'Wangxiaohui%122';
+
+设置权限和ssl，开启ssl之后，客户端使用ssl登陆
+grant all on *.* to 'root'@'%'  REQUIRE SSL;
+alter user 'root'@'%' require none;
+
+查看
+show global variables like '%ssl%';
+
+
+
+
