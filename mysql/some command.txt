@@ -25,4 +25,5 @@ require x509;
 mysql workbench可以登录成功，navicat 无法登陆成功。 
 
 
-
+mysql 审计插件
+https://blog.csdn.net/u010587433/article/details/49643677
