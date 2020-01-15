@@ -11,3 +11,9 @@ Protobuf3 + Netty4: 在socket上传输多种类型的protobuf数据
 nesty  
   
 https://github.com/netty/netty/blob/0cde4d9cb4d19ddc0ecafc5be7c5f7c781a1f6e9/codec/src/main/java/io/netty/handler/codec/protobuf/ProtobufDecoder.java  
+
+```java
+Message.Builder builder =SomeProto.newBuilder();
+String jsonFormat = _load json document from a source_;
+JsonFormat.merge(jsonFormat, builder);
+```
