@@ -17,3 +17,7 @@ Message.Builder builder =SomeProto.newBuilder();
 String jsonFormat = _load json document from a source_;
 JsonFormat.merge(jsonFormat, builder);
 ```
+
+# Druid
+https://blog.csdn.net/matrix_google/article/details/82878214   
+时序数据库技术体系 – Druid 多维查询之Bitmap索引   
