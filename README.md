@@ -57,6 +57,9 @@ yum -y install gtk2
 yum -y install net-tools.x86_64  
 
 修改/etc/crontab MAILTO=""
- systemctl enable crond
- 
+ systemctl enable crond  
+   
+cp  
+将主机/www/runoob目录拷贝到容器96f7f14e99ab中，目录重命名为www。  
+docker cp /www/runoob 96f7f14e99ab:/www  
 
