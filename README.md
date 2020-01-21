@@ -31,3 +31,21 @@ sudo docker save -o ubuntu.tar ubuntu
 由此得到了 ubuntu.tar 文件，将其拷贝到远程机器，执行  
   
 sudo docker load < ubuntu.tar  
+
+###
+sudo docker run --privileged --cap-add SYS_ADMIN -e container=docker -it --name my_centos -p 80:80  -d  --restart=always centos /usr/sbin/init    
+--privileged 指定容器是否是特权容器。这里开启特权模式。  
+--cap-add SYS_ADMIN 添加系统的权限。否则系统很多功能都用不了的。  
+-e container=docker 设置容器的类型。  
+-it 启动互动模式。  
+--name 取别名 my_centos  
+-p 端口映射,把80端口映射到容器的80端口。  
+-d 放入后台  
+--restart=always 在启动时指定自动重启  
+/usr/sbin/init 初始容器里的centos。  
+以上的参数是必需的。否则建立的centos容器不能正常使用和互动  
+如果没有-it参数，容器会不停启动。  
+如果没有初始化和特权等等的开关，就不能使用systemctl。所以，以上的开关和设置是一样不能少的。  
+  
+进入容器  
+docker exec -it my_centos /bin/bash   
