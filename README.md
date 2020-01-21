@@ -56,4 +56,7 @@ yum -y install crontabs
 yum -y install gtk2  
 yum -y install net-tools.x86_64  
 
+修改/etc/crontab MAILTO=""
+ systemctl enable crond
+ 
 
