@@ -32,7 +32,7 @@ sudo docker save -o ubuntu.tar ubuntu
   
 sudo docker load < ubuntu.tar  
 
-###
+### 启动docker
 sudo docker run --privileged --cap-add SYS_ADMIN -e container=docker -it --name my_centos -p 80:80  -d  --restart=always centos /usr/sbin/init    
 --privileged 指定容器是否是特权容器。这里开启特权模式。  
 --cap-add SYS_ADMIN 添加系统的权限。否则系统很多功能都用不了的。  
@@ -47,5 +47,7 @@ sudo docker run --privileged --cap-add SYS_ADMIN -e container=docker -it --name 
 如果没有-it参数，容器会不停启动。  
 如果没有初始化和特权等等的开关，就不能使用systemctl。所以，以上的开关和设置是一样不能少的。  
   
-进入容器  
+docker run --privileged --cap-add SYS_ADMIN -it --name my_centos -p 8888:8888 -d --restart=always centos /usr/sbin/init
+### 进入容器  
 docker exec -it my_centos /bin/bash   
+
