@@ -47,7 +47,7 @@ sudo docker run --privileged --cap-add SYS_ADMIN -e container=docker -it --name 
 如果没有-it参数，容器会不停启动。  
 如果没有初始化和特权等等的开关，就不能使用systemctl。所以，以上的开关和设置是一样不能少的。  
   
-docker run --privileged --cap-add SYS_ADMIN -it --name my_centos -p 8888:8888 -d --restart=always centos /usr/sbin/init
+docker run --privileged --cap-add SYS_ADMIN -it --name my_centos -p 8888:8888 -d --restart=always centos:7.4.1708 /usr/sbin/init
 ### 进入容器  
 docker exec -it my_centos /bin/bash   
 
