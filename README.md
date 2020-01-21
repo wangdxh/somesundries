@@ -62,4 +62,9 @@ yum -y install net-tools.x86_64
 cp  
 将主机/www/runoob目录拷贝到容器96f7f14e99ab中，目录重命名为www。  
 docker cp /www/runoob 96f7f14e99ab:/www  
+export import  
+docker export -o centos.import my_centos  
+test： docker import nginx-test.tar nginx:imp  
+
+
 
