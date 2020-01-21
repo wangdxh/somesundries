@@ -50,4 +50,10 @@ sudo docker run --privileged --cap-add SYS_ADMIN -e container=docker -it --name 
 docker run --privileged --cap-add SYS_ADMIN -it --name my_centos -p 8888:8888 -d --restart=always centos:7.4.1708 /usr/sbin/init
 ### 进入容器  
 docker exec -it my_centos /bin/bash   
+yum -y update  
+//yum -y install vixie-cron  
+yum -y install crontabs  
+yum -y install gtk2  
+yum -y install net-tools.x86_64  
+
 
