@@ -67,4 +67,6 @@ docker export -o centos.import my_centos
 test： docker import nginx-test.tar nginx:imp  
 
 
-
+### go
+go mod  
+https://segmentfault.com/a/1190000018536993  
