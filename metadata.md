@@ -125,8 +125,8 @@ allof 所有条件满足时，校验才会通过;anyof 只要有一个，oneof�
 可以参考 http://www.jsonschema2pojo.org
 
 # Protobuf mapping
-json schema和protobuf的定义之间有隐含的一一映射关系，包括基本的数据类型，对象，数组，枚举；protobuf不包含oneof anyof，在某些情况下json字段转protobuf需要改变类型和格式。  
-定义基本的转换描述如下,默认转换规则的不需要定义，只列出来需要转换的字段列表，json中需要转换的key，可以使用json schema中的路径格式(#/properties/abc)，也可以使用jsonpath的路径格式($.abc)。
+* json schema和protobuf的定义之间有隐含的一一映射关系，包括基本的数据类型，对象，数组，枚举；protobuf不包含oneof anyof，在某些情况下json字段转protobuf需要改变类型和格式。  
+* 定义基本的转换描述如下,默认转换规则的不需要定义，只列出来需要转换的字段列表，json中需要转换的key，可以使用json schema中的路径格式(#/properties/abc)，也可以使用jsonpath的路径格式($.abc)。
 ```json
 {
     "type":"jsontoprotobuf",
@@ -154,6 +154,7 @@ json schema和protobuf的定义之间有隐含的一一映射关系，包括基�
 # Database mapping
 * 数据库的映射格式和pb不同，因为json schema和database的定义之间没有任何隐含的的映射关系。
 * 数据库的定义参考sql中create table语句
+* 这一步从java对象到数据库字段，路径使用jsonpath可能更加方便
 ```json
 {
     "type":"jsontodatabase",
@@ -195,6 +196,6 @@ json schema和protobuf的定义之间有隐含的一一映射关系，包括基�
     ],
 }
 ```
-* 主要定义json字段和数据库表字段之间的一一映射，当出现 $ref 指向的类型是个数组时，程序需要进行对各个字段进行笛卡尔积，生成多个写入数据库的字段。
-* 更多数据库字段的特点需求指定，需要进行扩展
+* 主要定义json字段和数据库表字段之间的一一映射，当出现 $ref 指向的类型是个数组的某个字段时，需要对数组进行遍历，生成多个写入数据库的记录。
+* 更多数据库字段的特定需求，需要进行扩展
   
