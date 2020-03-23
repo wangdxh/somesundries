@@ -74,11 +74,11 @@
     },
     "mappings":[
         {
-            "sourcejson":"test.json",
+            "source":"test.json",  #字段值唯一指向某个json对象即可
             "url":"/somepath/someurl"
         },
         {
-            "sourcejson":"test2.json",
+            "source":"test2.json",
             "url":"/somepath/someurl2"
         },
         ......
