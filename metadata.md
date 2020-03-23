@@ -69,17 +69,20 @@
     "type":"jsontohttp",
     "netty":{
         "port":8080,
-        "threads":3,
+        "workerthreads":3,
+        "listenthreads":1,
         ......
     },
     "mappings":[
         {
             "source":"test.json",  #字段值唯一指向某个json对象即可
-            "url":"/somepath/someurl"
+            "url":"/somepath/someurl",
+            "method":"get"
         },
         {
             "source":"test2.json",
-            "url":"/somepath/someurl2"
+            "url":"/somepath/someurl2",
+            "method":"post"
         },
         ......
     ]
