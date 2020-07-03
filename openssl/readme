@@ -1,0 +1,3 @@
+
+openssl ca -config ./req.conf  -in ./test.csr -out ./test.crt -passin pass:123456 -subj "/C=CN/ST=GD/L=SZ/O=vihoo/OU=dev/CN=vivo.com/emailAddress=yy@vivo.com" -extensions v3_req -startdate 20180911103711Z -enddate 20211013103711Z -batch
+

@@ -1,0 +1,29 @@
+5.7 安装之后更改用户名密码：
+
+默认root密码
+grep "temporary password" /var/log/mysqld.log 
+2018-08-23T05:58:02.684122Z 1 [Note] A temporary password is generated for root@localhost: yo;5yaL-eUqj
+
+step 1: SET PASSWORD = PASSWORD('your new password');
+step 2: ALTER USER 'root'@'localhost' PASSWORD EXPIRE NEVER;
+step 3: flush privileges;
+
+创建用户
+CREATE USER 'root'@'%' IDENTIFIED BY 'Wangxiaohui%123';
+ALTER USER 'root'@'%' IDENTIFIED BY 'Wangxiaohui%122';
+
+设置权限和ssl，开启ssl之后，客户端使用ssl登陆
+grant all on *.* to 'root'@'%'  REQUIRE SSL;
+alter user 'root'@'%' require none;
+
+查看
+show global variables like '%ssl%';
+
+验证ssl 需要秘钥：
+require x509;
+ mysql -uroot -pWangxiaohui%123 --ssl-ca=/var/lib/mysql/ca.pem --ssl-cert=/var/lib/mysql/client-cert.pem --ssl-key=/var/lib/mysql/client-key.pem
+mysql workbench可以登录成功，navicat 无法登陆成功。 
+
+
+mysql 审计插件
+https://blog.csdn.net/u010587433/article/details/49643677
